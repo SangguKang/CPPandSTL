@@ -15,21 +15,29 @@ private:
 };
 
 /* specific extern function */
-void SetRect(MousePoint pt1, MousePoint pt2)
+//void SetRect(MousePoint pt1, MousePoint pt2)
+//{
+//    cout << pt1.GetX() << ", " << pt1.GetY() << endl;
+//    cout << pt2.GetX() << ", " << pt2.GetY() << endl;
+//    pt1.SetXY(1000, 2000);
+//    cout << pt1.GetX() << ", " << pt1.GetY() << endl;
+//    cout << pt2.GetX() << ", " << pt2.GetY() << endl;
+//}
+
+//void CopyObject(MousePoint pt1, MousePoint pt2)
+void CopyObject(MousePoint &pt1, MousePoint &pt2)
 {
-    cout << pt1.GetX() << ", " << pt1.GetY() << endl;
-    cout << pt2.GetX() << ", " << pt2.GetY() << endl;
-    pt1.SetXY(1000, 2000);
-    cout << pt1.GetX() << ", " << pt1.GetY() << endl;
-    cout << pt2.GetX() << ", " << pt2.GetY() << endl;
+    pt1 = pt2;
+    cout << pt1.GetX() << "." << pt1.GetY() << endl;
 }
 
 int main()
 {
     MousePoint mp1(10, 20), mp2(100, 200);
-    SetRect(mp1, mp2);
     cout << mp1.GetX() << ", " << mp1.GetY() << endl;
-    cout << mp2.GetX() << ", " << mp2.GetY() << endl;
+    CopyObject(mp1, mp2);
+    cout << mp1.GetX() << ", " << mp1.GetY() << endl;
+
     return 0;
 }
 
@@ -39,7 +47,6 @@ MousePoint::MousePoint()
 }
 MousePoint::MousePoint(int nX, int nY)
 {
-    cout << "call constructor" << endl;
     x = nX;
     y = nY;
 }
