@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+
 using namespace std;
 
 class String
@@ -7,10 +8,9 @@ class String
 public:
     String(char ch, int nSize);
     ~String();
-
-    //void operator=(const String& s);
     String& operator=(const String& s);
     void SetData();
+    String(const String& s);    //copy constructor
 private:
     int nLength;
     char *pBuffer;
@@ -27,16 +27,11 @@ String::~String()
 {
     delete pBuffer;
 }
-
-//void String::operator=(const String& s)
 String& String::operator=(const String& s)
 {
-    cout << "Operator" << endl;
-
+    cout << "operator" << endl;
     if(&s == this)
         return *this;
-        //return;
-
     delete pBuffer;
     nLength = s.nLength;
     pBuffer = new char[nLength + 1];
@@ -50,17 +45,19 @@ void String::SetData()
     cout << "nLength: " << this->nLength << endl;
 }
 
+String::String(const String& s)
+{
+    nLength = s.nLength;
+    pBuffer = new char[nLength + 1];
+    strcpy(pBuffer, s.pBuffer);
+}
+
 int main()
 {
-    String str1('A', 3), str2('B', 5), str3('C', 4);
-    cout << "before input str1";
-    str1.SetData();
-
-    //str1 = str1;
-    str1 = str2 = str3;
-
-    cout << "after input str1";
-    str1.SetData();
+    String str1('A',3);
+    String str2 = str1;
+    cout << "After input str2";
+    str2.SetData();
 
     return 0;
 }
