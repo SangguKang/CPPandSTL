@@ -1,3 +1,4 @@
+#include <cstring>
 #include "Employee.h"
 
 Employee::Employee()
@@ -16,5 +17,5 @@ Employee::Employee(char* pName, char* pAddr)
 
 Employee::~Employee()
 {
-    cout << "test" <<endl;
+    //dtor
 }

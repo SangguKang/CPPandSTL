@@ -1,10 +1,6 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 
-#include <iostream>
-#include <cstring>
-
-using namespace std;
 
 class Employee
 {
